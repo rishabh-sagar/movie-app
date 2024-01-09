@@ -12,7 +12,7 @@ A completely responsive IMDB like movie database made with ReactJS using TMDB AP
 ![Title page screenshot](/readme/4.png)
 
 **Watch page:**
-![Title page screenshot](/readme/7.png)
+![Title page screenshot](/readme/6.png)
 
 
 **Actor's Info:**
