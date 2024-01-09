@@ -82,14 +82,14 @@ function WatchPage2() {
 					</div>
  
 					<iframe
-                className="h-full w-full"
+                className="h-[50vh] w-[50vw] md:h-full md:w-full"
                 src={videoId}
                 allowFullScreen
             ></iframe>
                 </div>
             ):(
 				<iframe
-                className="h-full w-full"
+                className="h-[50vh] w-[50vw] md:h-full md:w-full"
                 src={videoId}
                 allowFullScreen
             ></iframe>

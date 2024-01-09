@@ -7,7 +7,7 @@ function WatchPage() {
 	
 	return (
 		<div className="h-full w-full">
-			<iframe className="h-full w-full" src={`https://vidsrc.to/embed/${type}/${id}`}     allowFullScreen
+			<iframe className="h-[50vh] w-[50vw] md:h-full md:w-full" src={`https://vidsrc.to/embed/${type}/${id}`}     allowFullScreen
  ></iframe>
 		</div>
 	)
