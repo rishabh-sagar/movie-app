@@ -33,17 +33,17 @@ function TitleDetails({ title ,id,type}) {
       		<div className="flex flex-wrap justify-center text-center text-sm">
            <Link to={`/watch/${type}/${id}`}>
            <div className="m-2 flex items-center mr-4">
-            <button type="button" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-full text-base px-5 py-2.5 text-center me-2 mb-2">Watch now Server 1</button>
+            <button type="button" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-full text-base px-5 py-2.5 text-center me-2 mb-2">Watch (Server 1)</button>
               </div> 
            </Link>
            <Link to={`/watch2/${type}/${id}`}>
            <div className="m-2 flex items-center mr-4">
-            <button type="button" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-full text-base px-5 py-2.5 text-center me-2 mb-2">Watch now Server 2 </button>
+            <button type="button" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-full text-base px-5 py-2.5 text-center me-2 mb-2">Watch (Server 2) </button>
               </div> 
            </Link>
            <Link to={`/watch3/${type}/${id}`}>
            <div className="m-2 flex items-center mr-4">
-            <button type="button" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-full text-base px-5 py-2.5 text-center me-2 mb-2">Watch now Server 3 </button>
+            <button type="button" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-full text-base px-5 py-2.5 text-center me-2 mb-2">Watch (Server 3) </button>
               </div> 
            </Link>
             {title.release_date && 
