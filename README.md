@@ -2,13 +2,21 @@
 A completely responsive IMDB like movie database made with ReactJS using TMDB API. Browse popular titles and search across your favourite movies & tv series here.
 
 **Movie/Tv Series page:**
-![Title page screenshot](https://i.ibb.co/NCTwVw1/Screenshot-from-2021-08-23-12-34-00.png)
-
+![Title page screenshot](/readme/1.png)
+![Title page screenshot](/readme/2.png)
 **Search:**
-![Search page screenshot](https://i.ibb.co/DpXN8F1/Screenshot-from-2021-08-23-12-35-59.png)
+![Search page screenshot](/readme/5.png)
+
+**Title page:**
+![Title page screenshot](/readme/3.png)
+![Title page screenshot](/readme/4.png)
+
+**Watch page:**
+![Title page screenshot](/readme/6.png)
+
 
 **Actor's Info:**
-![Actor's info screenshot](https://i.ibb.co/8z3gYJR/Screenshot-from-2021-08-23-12-38-01.png)
+![Actor's info screenshot](/readme/7.png)
 
 ---
 ## Technologies used 🛠️
@@ -20,7 +28,7 @@ A completely responsive IMDB like movie database made with ReactJS using TMDB AP
 ## Run Locally
 1. Clone this repo
 ```bash
-git clone  && cd react-imdb
+git clone https://github.com/rishabh-sagar/movie-app.git && cd react-imdb
 ```
 2. Install project dependecies
 ```bash
