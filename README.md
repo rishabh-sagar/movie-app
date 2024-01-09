@@ -2,7 +2,7 @@
 A completely responsive IMDB like movie database made with ReactJS using TMDB API. Browse popular titles and search across your favourite movies & tv series here.
 
 **Movie/Tv Series page:**
-![Title page screenshot](https://i.ibb.co/NCTwVw1/Screenshot-from-2021-08-23-12-34-00.png)
+![Title page screenshot](/readme/1.png)
 
 **Search:**
 ![Search page screenshot](https://i.ibb.co/DpXN8F1/Screenshot-from-2021-08-23-12-35-59.png)
