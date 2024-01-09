@@ -3,12 +3,20 @@ A completely responsive IMDB like movie database made with ReactJS using TMDB AP
 
 **Movie/Tv Series page:**
 ![Title page screenshot](/readme/1.png)
-
+![Title page screenshot](/readme/2.png)
 **Search:**
-![Search page screenshot](https://i.ibb.co/DpXN8F1/Screenshot-from-2021-08-23-12-35-59.png)
+![Search page screenshot](/readme/5.png)
+
+**Title page:**
+![Title page screenshot](/readme/3.png)
+![Title page screenshot](/readme/4.png)
+
+**Watch page:**
+![Title page screenshot](/readme/7.png)
+
 
 **Actor's Info:**
-![Actor's info screenshot](https://i.ibb.co/8z3gYJR/Screenshot-from-2021-08-23-12-38-01.png)
+![Actor's info screenshot](/readme/7.png)
 
 ---
 ## Technologies used 🛠️
