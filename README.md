@@ -1,4 +1,4 @@
-# [Movie App]()
+# [Movie App](https://movie-app.tech/)
 A completely responsive IMDB like movie database made with ReactJS using TMDB API. Browse popular titles and search across your favourite movies & tv series here.
 
 **Movie/Tv Series page:**
