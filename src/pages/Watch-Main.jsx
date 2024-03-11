@@ -36,19 +36,27 @@ const WatchMain = () => {
         const apiUrl = isMovie
           ? `https://vidsrc-api-ten.vercel.app/vidsrc/${id}`
           : `https://vidsrc-api-ten.vercel.app/vidsrc/${id}?s=${selectedSeason}&e=${selectedEpisode}`;
+
         const vsrcmeUrl = isMovie
           ? `https://vidsrc-api-ten.vercel.app/vsrcme/${id}`
           : `https://vidsrc-api-ten.vercel.app/vsrcme/${id}?s=${selectedSeason}&e=${selectedEpisode}`;
-  
-        const [vidsrcResponse, vsrcmeResponse] = await Promise.all([
-          axios.get(apiUrl),
-          axios.get(vsrcmeUrl),
-        ]);
-  
+
+        const vidsrcResponse = await axios.get(apiUrl, {
+          headers: {
+            'Access-Control-Allow-Origin': 'https://movie-app.tech', // Replace with your domain
+          },
+        });
+
+        const vsrcmeResponse = await axios.get(vsrcmeUrl, {
+          headers: {
+            'Access-Control-Allow-Origin': 'https://movie-app.tech', // Replace with your domain
+          },
+        });
+
         const vidsrcData = await vidsrcResponse.data;
         const vsrcmeData = await vsrcmeResponse.data;
-        console.log([...vidsrcData,...vsrcmeData])
-  
+        console.log([...vidsrcData, ...vsrcmeData])
+
         // Extract sources and subtitles separately
         const sourcesArray = [];
         const subtitlesArray = [];
@@ -57,30 +65,30 @@ const WatchMain = () => {
           if (typeof source.data !== 'object') {
             return source; // Skip processing if data is not an object
           }
-          
+
           const sourceName = source.name;
           console.log(sourceName)
           const sourceFile = source.data.file.replace(/#.mp4/g, "");
           const sourceSubtitles = Array.isArray(source.data.sub) ? source.data.sub : [];
-          
+
           // Add to sourcesArray if sourceFile exists
           if (sourceFile) {
             sourcesArray.push({ sourceName, link: sourceFile });
           }
-  
+
           const subArray = sourceSubtitles.map(sub => ({
             lang: `${sub.lang}-${sourceName}`,
             URL: sub.file,
           }));
           subtitlesArray.push(...subArray);
-  
+
           return {
             ...source,
             sources: sourceFile ? [{ src: sourceFile }] : [],
             subtitles: subArray,
           };
         });
-  
+
         setVideoSources(combinedSources);
         setSources(sourcesArray);
         // console.log(sourcesArray)
@@ -92,50 +100,50 @@ const WatchMain = () => {
         setIsLoading(false);
       }
     };
-  
-    fetchData();
-  }, [id, seasons, episodes,selectedEpisode,selectedSeason, isMovie]);
-  
 
-  
+    fetchData();
+  }, [id, seasons, episodes, selectedEpisode, selectedSeason, isMovie]);
+
+
+
   useEffect(() => {
     const fetchData = async () => {
-        try {
-            if (type !== 'movie') {
-                const response = await fetch(`${API_BASE_URL}/${type}/${id}?api_key=${TMDB_API_KEY}`);
-                const titleData = await response.json();
-                console.log(titleData)
-                if (titleData.seasons) {
-                    setSeasons(titleData.seasons);
-                }
-            }
-        } catch (error) {
-            console.error('Error fetching data:', error);
+      try {
+        if (type !== 'movie') {
+          const response = await fetch(`${API_BASE_URL}/${type}/${id}?api_key=${TMDB_API_KEY}`);
+          const titleData = await response.json();
+          console.log(titleData)
+          if (titleData.seasons) {
+            setSeasons(titleData.seasons);
+          }
         }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     };
 
     fetchData();
-}, [type, id]);
+  }, [type, id]);
 
-useEffect(() => {
+  useEffect(() => {
     if (selectedSeason !== 0 && type !== 'movie') {
-        const selectedSeasonData = seasons.find(season => season.season_number === selectedSeason);
-        if (selectedSeasonData) {
-            setEpisodes(selectedSeasonData.episode_count);
-        }
+      const selectedSeasonData = seasons.find(season => season.season_number === selectedSeason);
+      if (selectedSeasonData) {
+        setEpisodes(selectedSeasonData.episode_count);
+      }
     }
-}, [selectedSeason, seasons, type]);
+  }, [selectedSeason, seasons, type]);
 
-const handleSeasonChange = event => {
+  const handleSeasonChange = event => {
     setSelectedSeason(parseInt(event.target.value));
     setSelectedEpisode(1); // Reset selected episode when a new season is chosen
-};
+  };
 
-const handleEpisodeChange = event => {
+  const handleEpisodeChange = event => {
     setSelectedEpisode(parseInt(event.target.value));
-};
+  };
 
- 
+
 
   const handleSourceChange = (event) => {
     console.log(sources)
@@ -157,60 +165,60 @@ const handleEpisodeChange = event => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen text-white">
       <div>
-      {!isMovie && (
+        {!isMovie && (
+          <div className="mb-4">
+            <label htmlFor="season" className="text-white mr-1">Select a Season:</label>
+            <select id="season" value={selectedSeason} className='bg-gray-800 text-white px-2 py-1 rounded' onChange={handleSeasonChange}>
+              {seasons.map(season => (
+                <option key={season.id} value={season.season_number}>
+                  Season {season.season_number}
+                </option>
+              ))}
+            </select>
+
+            <label htmlFor="episode" className=" mx-2 text-white">Select an Episode:</label>
+            <select id="episode" value={selectedEpisode} className='bg-gray-800 text-white px-2 py-1 rounded' onChange={handleEpisodeChange}>
+              {[...Array(episodes).keys()].map(i => (
+                <option key={i + 1} value={i + 1}>
+                  Episode {i + 1}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
         <div className="mb-4">
-         <label htmlFor="season" className="text-white mr-1">Select a Season:</label>
-                    <select id="season" value={selectedSeason} className='bg-gray-800 text-white px-2 py-1 rounded' onChange={handleSeasonChange}>
-                        {seasons.map(season => (
-                            <option key={season.id}  value={season.season_number}>
-                               Season {season.season_number}
-                            </option>
-                        ))}
-                    </select>
-
-                    <label htmlFor="episode" className=" mx-2 text-white">Select an Episode:</label>
-                    <select id="episode" value={selectedEpisode} className='bg-gray-800 text-white px-2 py-1 rounded' onChange={handleEpisodeChange}>
-                        {[...Array(episodes).keys()].map(i => (
-                            <option key={i + 1}  value={i + 1}>
-                                Episode {i + 1}
-                            </option>
-                        ))}
-                    </select> 
+          <label htmlFor="sources" className="mr-2">
+            Select Source:
+          </label>
+          <select
+            id="sources"
+            onChange={handleSourceChange}
+            className="bg-gray-800 text-white px-2 py-1 rounded"
+          >
+            {sources.map(source => (
+              <option key={source.sourceName} value={source.sourceName}>{source.sourceName}</option>
+            ))}
+          </select>
         </div>
-      )}
+      </div>
 
-      <div className="mb-4">
-        <label htmlFor="sources" className="mr-2">
-          Select Source:
-        </label>
-        <select
-          id="sources"
-          onChange={handleSourceChange}
-          className="bg-gray-800 text-white px-2 py-1 rounded"
-        >
-          {sources.map(source => (
-            <option key={source.sourceName} value={source.sourceName}>{source.sourceName}</option>
-          ))}
-        </select>
-      </div>
-      </div>
-      
 
       <div className="w-[95vw] md:w-[60vw] h-[60vh]">
         <MediaPlayer title="Sprite Fight" src={sourcesingle}>
           <MediaProvider>
-          {subtitles.length>0 &&
-                    subtitles.map((data) => (
-                      <Track
-                        src={data.URL}
-                        kind="subtitles"
-                        label={data.lang}
-                        lang={data.lang}
-                      />
-                    ))}
+            {subtitles.length > 0 &&
+              subtitles.map((data) => (
+                <Track
+                  src={data.URL}
+                  kind="subtitles"
+                  label={data.lang}
+                  lang={data.lang}
+                />
+              ))}
           </MediaProvider>
-         
-          <DefaultVideoLayout  icons={defaultLayoutIcons} />
+
+          <DefaultVideoLayout icons={defaultLayoutIcons} />
         </MediaPlayer>
       </div>
     </div>
