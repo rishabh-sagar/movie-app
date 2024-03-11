@@ -34,11 +34,11 @@ const WatchMain = () => {
     const fetchData = async () => {
       try {
         const apiUrl = isMovie
-          ? `http://vidsrc-api-ten.vercel.app/vidsrc/${id}`
-          : `http://vidsrc-api-ten.vercel.app/vidsrc/${id}?s=${selectedSeason}&e=${selectedEpisode}`;
+          ? `https://vidsrc-api-ten.vercel.app/vidsrc/${id}`
+          : `https://vidsrc-api-ten.vercel.app/vidsrc/${id}?s=${selectedSeason}&e=${selectedEpisode}`;
         const vsrcmeUrl = isMovie
-          ? `http://vidsrc-api-ten.vercel.app/vsrcme/${id}`
-          : `http://vidsrc-api-ten.vercel.app/vsrcme/${id}?s=${selectedSeason}&e=${selectedEpisode}`;
+          ? `https://vidsrc-api-ten.vercel.app/vsrcme/${id}`
+          : `https://vidsrc-api-ten.vercel.app/vsrcme/${id}?s=${selectedSeason}&e=${selectedEpisode}`;
   
         const [vidsrcResponse, vsrcmeResponse] = await Promise.all([
           axios.get(apiUrl),
